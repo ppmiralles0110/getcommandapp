@@ -1,17 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>URL GET Request</title>
+    <title>GET Request Tester</title>
+    <link href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f3f2f1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .ms-Grid {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px;
+        }
+        h1 {
+            color: #0078d4;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .ms-TextField {
+            width: 100%;
+            margin-bottom: 16px;
+        }
+        .ms-Button {
+            margin-right: 8px;
+        }
+        .response-box {
+            background: #f3f2f1;
+            border: 1px solid #e1dfdd;
+            border-radius: 4px;
+            padding: 16px;
+            margin-top: 24px;
+            white-space: pre-wrap;
+            font-family: 'Consolas', 'Menlo', 'Monaco', monospace;
+            color: #323130;
+        }
+    </style>
 </head>
 <body>
-    <h1>GET Request Tester</h1>
-    <form method="post" action="/">
-        <input type="text" name="url" placeholder="Enter URL" required>
-        <button type="submit">Send GET Request</button>
-    </form>
-    {% if response %}
-        <h2>Response:</h2>
-        <pre>{{ response }}</pre>
-    {% endif %}
+    <div class="ms-Grid">
+        <h1>Microsoft GET Request Tester</h1>
+        <form method="post" action="/">
+            <div class="ms-TextField">
+                <label class="ms-Label">Enter URL</label>
+                <input class="ms-TextField-field" type="text" name="url" value="{{ url or '' }}" required>
+            </div>
+            <button class="ms-Button ms-Button--primary" type="submit" name="action" value="get">
+                <span class="ms-Button-label">Send GET Request</span>
+            </button>
+            <button class="ms-Button ms-Button--default" type="submit" name="action" value="clear">
+                <span class="ms-Button-label">Clear</span>
+            </button>
+        </form>
+        {% if response %}
+            <div class="response-box">
+                <strong>Response:</strong>
+                <br>
+                {{ response }}
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>
