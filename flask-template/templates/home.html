@@ -1,5 +1,17 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>{% block title %} Welcome to your Flask app! {% endblock %}</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL GET Request</title>
+</head>
+<body>
+    <h1>GET Request Tester</h1>
+    <form method="post" action="/">
+        <input type="text" name="url" placeholder="Enter URL" required>
+        <button type="submit">Send GET Request</button>
+    </form>
+    {% if response %}
+        <h2>Response:</h2>
+        <pre>{{ response }}</pre>
+    {% endif %}
+</body>
+</html>
